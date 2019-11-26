@@ -1,0 +1,61 @@
+# Javascript Node CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+version: 2
+jobs:
+  build:
+    working_directory: ~/projects/showdown
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - modules-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - modules-
+
+      - run: npm ci install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: modules-{{ checksum "package.json" }}
+
+      - run: make dist.zip
+      - run: cp dist.zip artifacts/dist.zip
+
+      - store_artifacts:
+          path: artifacts
+
+      - persist_to_workspace:
+          root: ~/projects/expeditions
+          paths:
+            - .
+  deploy:
+    working_directory: ~/projects/showdown
+    docker:
+      - image: cibuilds/github:0.13.0
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            ghr -t ${GITHUB_TOKEN} -u astral-atlas -r showdown -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./artifacts/
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/

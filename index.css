@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Pro|Rye&display=swap');
+
+.showdownContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header.showdownHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.showdownHeader h1 {
+  font-family: 'Rye', cursive;
+  text-align: center;
+}
+
+.showdownHeader p {
+  font-family: 'Crimson Pro', serif;
+  text-align: center;
+}
+
+.showdownCountdown caption {
+  font-family: 'Crimson Pro', serif;
+}
+
+.showdownCountdown th {
+  font-family: 'Crimson Pro', serif;
+  text-align: center;
+  min-width: 80px;
+}
+
+.showdownCountdown td {
+  font-family: 'Crimson Pro', serif;
+  text-align: center;
+  width: 50px;
+}

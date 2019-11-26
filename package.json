@@ -1,0 +1,29 @@
+{
+  "name": "@1d9tech/showdown",
+  "version": "1.0.0",
+  "description": "The website for the showdown in mey'ir",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "author": "luke@kaal.im",
+  "license": "MIT",
+  "dependencies": {
+    "@astral-atlas/compass": "^2.4.0",
+    "@lukekaalim/http-client": "^1.2.0",
+    "preact": "^10.0.5"
+  },
+  "@pika/web": {
+    "webDependencies": [
+      "preact",
+      "preact/hooks",
+      "preact/debug",
+      "@astral-atlas/compass",
+      "@lukekaalim/http-client"
+    ]
+  },
+  "devDependencies": {
+    "@pika/web": "^0.6.1",
+    "serve": "^11.2.0"
+  }
+}
