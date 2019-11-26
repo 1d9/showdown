@@ -4,7 +4,8 @@
   "description": "The website for the showdown in mey'ir",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "postversion": "git push --follow-tags"
   },
   "author": "luke@kaal.im",
   "license": "MIT",
