@@ -5,7 +5,7 @@ import { VolumeControl } from '../components/volume.js';
 
 const Soundtrack = () => {
   return h('iframe', {
-    src: 'https://www.youtube.com/embed/PYI09PMNazw?controls=0&autoplay=1',
+    src: 'https://www.youtube.com/embed/PYI09PMNazw?controls=0&autoplay=1&loop=1',
     frameborder: '0',
     allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture',
     height: '0',
