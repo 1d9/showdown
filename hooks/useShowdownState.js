@@ -1,7 +1,7 @@
 import { useEffect, useState, useReducer } from '/web_modules/preact/hooks.js';
 
 const DEFAULT_STATE = {
-  view: localStorage.getItem('DEFAULT_VIEW') || 'landing',
+  view: 'landing',
   volume: localStorage.getItem('DEFAULT_VOLUME') || 'mute',
 };
 

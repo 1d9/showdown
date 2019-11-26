@@ -3,12 +3,10 @@ import { createElement as h } from '/web_modules/preact.js';
 const LandingView = ({ dispatch }) => {
   const onPlayClick = () => {
     dispatch({ type: 'play' });
-    localStorage.setItem('DEFAULT_VIEW', 'main');
     localStorage.setItem('DEFAULT_VOLUME', 'unmute');
   };
   const onPlayMutedClick = () => {
     dispatch({ type: 'play-muted' });
-    localStorage.setItem('DEFAULT_VIEW', 'main');
     localStorage.setItem('DEFAULT_VOLUME', 'mute');
   };
 
