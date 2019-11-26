@@ -26,6 +26,7 @@ header.showdownHeader {
 .showdownHeader h1 {
   font-family: 'Rye', cursive;
   text-align: center;
+  margin: 0;
 }
 
 .showdownHeader p {

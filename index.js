@@ -8,7 +8,7 @@ const main = () => {
   if (!renderRoot)
     throw new Error('Could not Initialize, no render root detected on the page');
 
-  render(createElement(Showdown), renderRoot);
+  render(createElement(Showdown), document.body);
 };
 
 main();

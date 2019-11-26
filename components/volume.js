@@ -14,7 +14,7 @@ const VolumeControl = ({ state, dispatch }) => {
   return h('button', {
     class: 'showdownVolumeControl',
     onClick: () => state.volume === 'mute' ? onUnmuteClick() : onMuteClick()
-  }, state.volume)
+  }, state.volume === 'mute' ? 'unmute' : 'mute')
 };
 
 export {
