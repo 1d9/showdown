@@ -22,6 +22,7 @@ jobs:
           key: modules-{{ checksum "package.json" }}
 
       - run: make dist.zip
+      - run: mkdir -p artifacts
       - run: cp dist.zip artifacts/dist.zip
 
       - store_artifacts:
