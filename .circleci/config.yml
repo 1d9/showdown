@@ -29,7 +29,7 @@ jobs:
           path: artifacts
 
       - persist_to_workspace:
-          root: ~/projects/expeditions
+          root: ~/projects/showdown
           paths:
             - .
   deploy:
