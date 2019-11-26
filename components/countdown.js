@@ -29,35 +29,50 @@ const useSessions = (compass) => {
   return sessions;
 };
 
+const TimeTable = ({ days, hours, minutes, seconds }) => {
+  return h('table', {}, [
+    h('caption', {} , [
+      h('p', {}, 'Time until Showdown'),
+    ]),
+    h('thead', {}, [
+      h('tr', {} , [h('th', {} , 'Days'), h('th', {} , 'Hours'), h('th', {} , 'Minutes'), h('th', {} , 'Seconds')])
+    ]),
+    h('tbody', {} , [
+      h('tr', {} , [
+        h('td', {} , days),
+        h('td', {} , hours),
+        h('td', {} , minutes),
+        h('td', {} , seconds)
+      ])
+    ]),
+  ]);
+}
+
 const ShowdownCountdown = () => {
   const currentTime = useCurrentTime(100);
   const sessions = useSessions(compass);
 
   const showdownSession = sessions[sessions.length - 1];
 
-  const secondsUntilShowdownStart = showdownSession && (showdownSession.startTime - currentTime) / 1000;
+  if (!showdownSession) {
+    return h('div', { class: 'showdownCountdown' }, [
+      h(TimeTable, { days: '', hours: '', minutes: '', seconds: '' })
+    ]);
+  }
+
+  const secondsUntilShowdownStart = (showdownSession.startTime - currentTime) / 1000;
 
   const minutesUntilShowdownStart = secondsUntilShowdownStart / 60;
   const hoursUntilShowdownStart = minutesUntilShowdownStart / 60;
   const daysUntilShowdownStart = hoursUntilShowdownStart / 24;
 
   return h('div', { class: 'showdownCountdown' }, [
-    h('table', {}, [
-      h('caption', {} , [
-        h('p', {}, 'Time until Showdown'),
-      ]),
-      h('thead', {}, [
-        h('tr', {} , [h('th', {} , 'Days'), h('th', {} , 'Hours'), h('th', {} , 'Minutes'), h('th', {} , 'Seconds')])
-      ]),
-      h('tbody', {} , [
-        h('tr', {} , [
-          h('td', {} , Math.floor(daysUntilShowdownStart)),
-          h('td', {} , Math.floor(hoursUntilShowdownStart % 24)),
-          h('td', {} , Math.floor(minutesUntilShowdownStart % 60)),
-          h('td', {} , Math.floor(secondsUntilShowdownStart % 60))
-        ])
-      ]),
-    ])
+    h(TimeTable, {
+      days: Math.floor(daysUntilShowdownStart),
+      hours: Math.floor(hoursUntilShowdownStart % 24),
+      minutes: Math.floor(minutesUntilShowdownStart % 60),
+      seconds: Math.floor(secondsUntilShowdownStart % 60),
+    })
   ]);
 };
 
