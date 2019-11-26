@@ -41,7 +41,7 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: |
-            ghr -t ${GITHUB_TOKEN} -u astral-atlas -r showdown -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./artifacts/
+            ghr -t ${GITHUB_TOKEN} -u 1d9 -r showdown -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./artifacts/
 
 workflows:
   version: 2
